@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <title>Add Player Page</title>
+</head>
+
+<body>
+    <div class="container d-flex align-items-center justify-content-center" style="background-color: #0069D9;">
+        <div class="text-center p-3">
+            <h1 class="text-light mb-4">Add Player</h1>
+            <a href="/" class="btn btn-outline-light mr-2">Home</a>
+            <a href="/players" class="btn btn-outline-light">Players</a>
+            <form th:action="@{/playerAdded}" th:object="${player}" method="POST" class="mt-4">
+                <div class="form-group">
+                    <label for="name" class="text-light">Name</label>
+                    <input type="text" class="form-control" name="name" id="name" th:field="*{name}">
+                </div>
+                <div class="form-group">
+                    <label for="kills" class="text-light">Kills</label>
+                    <input type="number" class="form-control" name="kills" id="kills" th:field="*{kills}">
+                </div>
+                <div class="form-group">
+                    <label for="deaths" class="text-light">Deaths</label>
+                    <input type="number" class="form-control" name="deaths" id="deaths" th:field="*{deaths}">
+                </div>
+                <div class="form-group">
+                    <label for="matches" class="text-light">Matches</label>
+                    <input type="number" class="form-control" name="matches" id="matches" th:field="*{matches}">
+                </div>
+                <div class="form-group">
+                    <label for="points" class="text-light">Points</label>
+                    <input type="number" class="form-control" name="points" id="points" th:field="*{points}">
+                </div>
+                <button type="submit" class="btn btn-primary">Add Player</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

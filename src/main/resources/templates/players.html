@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <title>Players</title>
+</head>
+
+<body>
+
+    <h1 class="text-center mb-4">Players</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Kills</th>
+                <th>Deaths</th>
+                <th>Matches</th>
+                <th>Points</th>
+                <th>Rank</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="player:${players}">
+                <td th:text="${player.name}"></td>
+                <td th:text="${player.kills}"></td>
+                <td th:text="${player.deaths}"></td>
+                <td th:text="${player.matches}"></td>
+                <td th:text="${player.points}"></td>
+                <td>
+                    <span th:if="${player.points} lt 100" class="badge badge-danger">Bronze</span>
+                    <span th:if="${player.points} ge 100 and ${player.points} lt 300"
+                        class="badge badge-secondary">Silver</span>
+                    <span th:if="${player.points} ge 300 and ${player.points} lt 600"
+                        class="badge badge-warning">Gold</span>
+                    <span th:if="${player.points} ge 600 and ${player.points} lt 1000"
+                        class="badge badge-pill badge-success">Platinum</span>
+                    <span th:if="${player.points} ge 1000" class="badge badge-pill badge-info">Diamond</span>
+                </td>
+            </tr>
+        </tbody>
+        <!-- // Bronze (0-99)
+		// Silver (100-299)
+		// Gold (300-599)
+		// Platinum (600-999)
+		// Diamond (more than 1000) -->
+    </table>
+    <div class="container">
+        <div class="text-center">
+            <a th:href="@{/}" class="btn btn-primary mr-2">Home</a>
+            <a th:href="@{/addPlayer}" class="btn btn-primary">Add Player</a>
+        </div>
+    </div>
+</body>
+
+</html>
